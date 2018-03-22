@@ -29,11 +29,21 @@
       <file leaf-file-name="test_add_person.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/test_add_person.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="20" column="8" lean-forward="false" selection-start-line="20" selection-start-column="8" selection-end-line="20" selection-end-column="8" />
+            <state relative-caret-position="370">
+              <caret line="35" column="0" lean-forward="true" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
               <folding>
                 <element signature="e#24#82#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="person.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/person.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="7" column="26" lean-forward="false" selection-start-line="7" selection-start-column="26" selection-end-line="7" selection-end-column="26" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -57,6 +67,7 @@
         <option value="$PROJECT_DIR$/group.py" />
         <option value="$PROJECT_DIR$/test_add_group.py" />
         <option value="$PROJECT_DIR$/test_add_contact" />
+        <option value="$PROJECT_DIR$/person.py" />
         <option value="$PROJECT_DIR$/test_add_person.py" />
       </list>
     </option>
@@ -313,13 +324,17 @@
       <option name="project" value="LOCAL" />
       <updated>1521719541740</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Добавлен тест на добавление контакта">
+      <created>1521722640378</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1521722640378</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Unittests_in_test_add_contact2_py - 2018.03.21 at 23h 40m 20s.xml">
-      <configuration name="Unittests in test_add_contact2.py" configurationId="tests" />
-    </history-entry>
     <history-entry file="Unittests_in_test_add_contact2_py - 2018.03.21 at 23h 42m 18s.xml">
       <configuration name="Unittests in test_add_contact2.py" configurationId="tests" />
     </history-entry>
@@ -345,6 +360,9 @@
       <configuration name="Unittests in test_add_person.py" configurationId="tests" />
     </history-entry>
     <history-entry file="Unittests_in_test_add_person_py - 2018.03.22 at 14h 52m 51s.xml">
+      <configuration name="Unittests in test_add_person.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_in_test_add_person_py - 2018.03.22 at 15h 44m 26s.xml">
       <configuration name="Unittests in test_add_person.py" configurationId="tests" />
     </history-entry>
   </component>
@@ -546,10 +564,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/person.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="26" lean-forward="false" selection-start-line="7" selection-start-column="26" selection-end-line="7" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/test_add_person.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="20" column="8" lean-forward="false" selection-start-line="20" selection-start-column="8" selection-end-line="20" selection-end-column="8" />
+        <state relative-caret-position="370">
+          <caret line="35" column="0" lean-forward="true" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
           <folding>
             <element signature="e#24#82#0" expanded="true" />
           </folding>

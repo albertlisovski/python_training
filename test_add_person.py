@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from selenium.webdriver.firefox.webdriver import WebDriver
 import unittest
+from person import Person
 
 def is_alert_present(wd):
     try:
@@ -18,7 +19,7 @@ class test_add_person(unittest.TestCase):
         wd = self.wd
         self.open_home_page(wd)
         self.login(wd, username="admin", password="secret")
-        self.create_person(wd, fname="Ivan", mname="Ivanovich", lname="Ivanov", nname="Vanya", phone="+79999999999", email="mail@mail.ru")
+        self.create_person(wd, Person(fname="Ivan", mname="Ivanovich", lname="Ivanov", nname="Vanya", phone="+79999999999", email="mail@mail.ru"))
         # wd.find_element_by_name("theform").click()
         self.logout(wd)
 
@@ -26,35 +27,35 @@ class test_add_person(unittest.TestCase):
         wd = self.wd
         self.open_home_page(wd)
         self.login(wd, username="admin", password="secret")
-        self.create_person(wd, fname="", mname="", lname="", nname="", phone="", email="")
+        self.create_person(wd, Person(fname="", mname="", lname="", nname="", phone="", email=""))
         # wd.find_element_by_name("theform").click()
         self.logout(wd)
 
     def logout(self, wd):
        wd.find_element_by_link_text("Logout").click()
 
-    def create_person(self, wd, fname, mname, lname, nname, phone, email):
+    def create_person(self, wd, person):
         # add new person
         wd.find_element_by_link_text("add new").click()
         # fill person form
         wd.find_element_by_name("firstname").click()
         wd.find_element_by_name("firstname").clear()
-        wd.find_element_by_name("firstname").send_keys(fname)
+        wd.find_element_by_name("firstname").send_keys(person.fname)
         wd.find_element_by_name("middlename").click()
         wd.find_element_by_name("middlename").clear()
-        wd.find_element_by_name("middlename").send_keys(mname)
+        wd.find_element_by_name("middlename").send_keys(person.mname)
         wd.find_element_by_name("lastname").click()
         wd.find_element_by_name("lastname").clear()
-        wd.find_element_by_name("lastname").send_keys(lname)
+        wd.find_element_by_name("lastname").send_keys(person.lname)
         wd.find_element_by_name("nickname").click()
         wd.find_element_by_name("nickname").clear()
-        wd.find_element_by_name("nickname").send_keys(nname)
+        wd.find_element_by_name("nickname").send_keys(person.nname)
         wd.find_element_by_name("home").click()
         wd.find_element_by_name("home").clear()
-        wd.find_element_by_name("home").send_keys(phone)
+        wd.find_element_by_name("home").send_keys(person.phone)
         wd.find_element_by_name("email").click()
         wd.find_element_by_name("email").clear()
-        wd.find_element_by_name("email").send_keys(email)
+        wd.find_element_by_name("email").send_keys(person.email)
         # submit person creation
         wd.find_element_by_xpath("//div[@id='content']/form/input[21]").click()
 
