@@ -10,12 +10,12 @@ def app(request):
     return fixture
 
 def test_add_person(app):
-    app.login(username="admin", password="secret")
+    app.session.login(username="admin", password="secret")
     app.create_person(Person(fname="Ivan", mname="Ivanovich", lname="Ivanov", nname="Vanya", phone="+79999999999", email="mail@mail.ru"))
-    app.logout()
+    app.session.logout()
 
 def test_add_empty_person(app):
-    app.login(username="admin", password="secret")
+    app.session.login(username="admin", password="secret")
     app.create_person(Person(fname="", mname="", lname="", nname="", phone="", email=""))
-    app.logout()
+    app.session.logout()
 
