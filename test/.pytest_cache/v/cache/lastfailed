@@ -1,0 +1,6 @@
+{
+  "test_add_group.py::test_add_empty_group": true,
+  "test_add_person.py::test_add_empty_person": true,
+  "test_add_person.py::test_add_person": true,
+  "test_del_group.py::test_delete_first_group": true
+}
