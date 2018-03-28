@@ -27,3 +27,12 @@ class PersonHelper:
         wd.find_element_by_name("email").send_keys(person.email)
         # submit person creation
         wd.find_element_by_xpath("//div[@id='content']/form/input[21]").click()
+
+    def delete_first_person(self):
+        wd = self.app.wd
+        #select 1st item
+        wd.find_element_by_name("selected[]").click()
+        #submit deletion
+        wd.find_element_by_xpath("//div[@id='content']/form[2]/div[2]/input").click()
+        alert = wd.switch_to_alert()
+        alert.accept()
