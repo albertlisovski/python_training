@@ -1,4 +1,5 @@
 {
   "test/test_add_person.py::test_add_empty_person": true,
+  "test/test_add_person.py::test_add_person": true,
   "test_add_contact2.py": true
 }
