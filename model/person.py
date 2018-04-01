@@ -1,5 +1,5 @@
 class Person:
-    def __init__(self, fname, mname, lname, nname, phone, email, address=""):
+    def __init__(self, fname=None, mname=None, lname=None, nname=None, phone=None, email=None, address=None):
         self.fname = fname
         self.mname = mname
         self.lname = lname

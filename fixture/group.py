@@ -1,3 +1,5 @@
+import time
+
 class GroupHelper:
     def __init__(self, app):
         self.app = app
@@ -43,13 +45,23 @@ class GroupHelper:
         self.fill_group_form(group)
         # submit group update
         wd.find_element_by_name("update").click()
-        self.return_to_group_page()
+        self.open_groups_page()
 
     def delete(self, line):
         wd = self.app.wd
         self.open_groups_page()
-        #select group
-        wd.find_element_by_xpath("//*[@id='content']/form/span[" + str(line) + "]/input").click()
+        #if we have only one group, xpath locator must be without []
+        if self.count() == 1:
+            xpath = "//*[@id='content']/form/span/input"
+        else:
+            xpath = "//*[@id='content']/form/span[" + str(line) + "]/input"
+        wd.find_element_by_xpath(xpath).click()
         #submit deletion
         wd.find_element_by_name("delete").click()
-        self.return_to_group_page()
+        self.open_groups_page()
+
+    def count(self):
+        wd = self.app.wd
+        self.open_groups_page()
+        time.sleep(1)
+        return len(wd.find_elements_by_name("selected[]"))

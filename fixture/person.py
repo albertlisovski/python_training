@@ -1,30 +1,25 @@
+import time
+
 class PersonHelper:
     def __init__(self, app):
         self.app = app
 
     def fill_person_form(self, wd, person):
         # fill person form
-        wd.find_element_by_name("firstname").click()
-        wd.find_element_by_name("firstname").clear()
-        wd.find_element_by_name("firstname").send_keys(person.fname)
-        wd.find_element_by_name("middlename").click()
-        wd.find_element_by_name("middlename").clear()
-        wd.find_element_by_name("middlename").send_keys(person.mname)
-        wd.find_element_by_name("lastname").click()
-        wd.find_element_by_name("lastname").clear()
-        wd.find_element_by_name("lastname").send_keys(person.lname)
-        wd.find_element_by_name("nickname").click()
-        wd.find_element_by_name("nickname").clear()
-        wd.find_element_by_name("nickname").send_keys(person.nname)
-        wd.find_element_by_name("home").click()
-        wd.find_element_by_name("home").clear()
-        wd.find_element_by_name("home").send_keys(person.phone)
-        wd.find_element_by_name("email").click()
-        wd.find_element_by_name("email").clear()
-        wd.find_element_by_name("email").send_keys(person.email)
-        wd.find_element_by_name("address").click()
-        wd.find_element_by_name("address").clear()
-        wd.find_element_by_name("address").send_keys(person.address)
+        self.change_field_value("firstname", person.fname)
+        self.change_field_value("middlename", person.mname)
+        self.change_field_value("lastname", person.lname)
+        self.change_field_value("nickname", person.nname)
+        self.change_field_value("home", person.phone)
+        self.change_field_value("email", person.email)
+        self.change_field_value("address", person.address)
+
+    def change_field_value(self, fieldname, text):
+        wd = self.app.wd
+        if text is not None:
+            wd.find_element_by_name(fieldname).click()
+            wd.find_element_by_name(fieldname).clear()
+            wd.find_element_by_name(fieldname).send_keys(text)
 
     def create(self, person):
         # add new person
@@ -49,4 +44,9 @@ class PersonHelper:
         #submit deletion
         wd.find_element_by_xpath("//div[@id='content']/form[2]/div[2]/input").click()
         wd.switch_to_alert().accept()
+
+    def count(self):
+        wd = self.app.wd
+        time.sleep(1)
+        return len(wd.find_elements_by_name("selected[]"))
 
