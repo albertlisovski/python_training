@@ -1,4 +1,5 @@
 import time
+from model.person import Person
 
 class PersonHelper:
     def __init__(self, app):
@@ -28,6 +29,7 @@ class PersonHelper:
         self.fill_person_form(wd, person)
         # submit person creation
         wd.find_element_by_xpath("//div[@id='content']/form/input[21]").click()
+        wd.find_element_by_link_text("home").click()
 
     def edit(self, line, person):
         wd = self.app.wd
@@ -44,9 +46,22 @@ class PersonHelper:
         #submit deletion
         wd.find_element_by_xpath("//div[@id='content']/form[2]/div[2]/input").click()
         wd.switch_to_alert().accept()
+        time.sleep(1)
 
     def count(self):
         wd = self.app.wd
         time.sleep(1)
         return len(wd.find_elements_by_name("selected[]"))
+
+    def get_person_list(self):
+        wd = self.app.wd
+        wd.find_element_by_link_text("home").click()
+        time.sleep(1)
+        #self.open_groups_page()
+        persons = []
+        for element in wd.find_elements_by_name("entry"):
+            text = element.find_element_by_css_selector("td:nth-child(2)").text
+            id = element.find_element_by_name("selected[]").get_attribute("value")
+            persons.append(Person(lname=text, id=id))
+        return persons
 

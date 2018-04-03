@@ -1,13 +1,27 @@
 from model.group import Group
 
 def test_edit_group_name(app):
-    group_param = 0
+    group_param = 1
     group_count = app.group.count()
-    if (group_param > 0) and (group_param <= group_count):
-        app.group.edit(group_param, Group(name="New group"))
-    else:
+    if (group_param > group_count) or (group_param < 1):
         app.group.create(Group(name="test"))
-        app.group.edit(group_count + 1, Group(name="New group"))
+        group_param = group_count + 1
+    old_groups = app.group.get_group_list()
+    group = Group(name="New group")
+    group.id = old_groups[group_param-1].id
+    app.group.edit(group_param, group)
+    new_groups = app.group.get_group_list()
+    assert len(old_groups) == len(new_groups)
+    old_groups[group_param-1] = group
+    assert sorted(old_groups, key=Group.id_or_max) == sorted(new_groups, key=Group.id_or_max)
 
 #def test_edit_group_header(app):
- #   app.group.edit(2, Group(header="New header"))
+#    group_param = 2
+#    group_count = app.group.count()
+#    if (group_param > group_count) or (group_param < 1):
+#        app.group.create(Group(header="test"))
+#        group_param = group_count + 1
+#    old_groups = app.group.get_group_list()
+#    app.group.edit(group_param, Group(header="New header"))
+#    new_groups = app.group.get_group_list()
+#    assert len(old_groups) == len(new_groups)
