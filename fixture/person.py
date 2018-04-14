@@ -30,6 +30,7 @@ class PersonHelper:
         # submit person creation
         wd.find_element_by_xpath("//div[@id='content']/form/input[21]").click()
         wd.find_element_by_link_text("home").click()
+        self.person_cache = None
 
     def edit(self, line, person):
         wd = self.app.wd
@@ -38,6 +39,7 @@ class PersonHelper:
         self.fill_person_form(wd, person)
         # submit person update
         wd.find_element_by_xpath("//div[@id='content']/form/input[22]").click()
+        self.person_cache = None
 
     def delete(self, line):
         wd = self.app.wd
@@ -46,6 +48,7 @@ class PersonHelper:
         #submit deletion
         wd.find_element_by_xpath("//div[@id='content']/form[2]/div[2]/input").click()
         wd.switch_to_alert().accept()
+        self.person_cache = None
         time.sleep(1)
 
     def count(self):
@@ -53,15 +56,18 @@ class PersonHelper:
         time.sleep(1)
         return len(wd.find_elements_by_name("selected[]"))
 
+    person_cache = None
+
     def get_person_list(self):
-        wd = self.app.wd
-        wd.find_element_by_link_text("home").click()
-        time.sleep(1)
-        #self.open_groups_page()
-        persons = []
-        for element in wd.find_elements_by_name("entry"):
-            text = element.find_element_by_css_selector("td:nth-child(2)").text
-            id = element.find_element_by_name("selected[]").get_attribute("value")
-            persons.append(Person(lname=text, id=id))
-        return persons
+        if self.person_cache is None:
+            wd = self.app.wd
+            wd.find_element_by_link_text("home").click()
+            time.sleep(1)
+            #self.open_groups_page()
+            self.person_cache = []
+            for element in wd.find_elements_by_name("entry"):
+                text = element.find_element_by_css_selector("td:nth-child(2)").text
+                id = element.find_element_by_name("selected[]").get_attribute("value")
+                self.person_cache.append(Person(lname=text, id=id))
+        return list(self.person_cache)
 
