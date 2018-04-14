@@ -40,11 +40,12 @@ class GroupHelper:
         self.return_to_group_page()
         self.group_cache = None
 
-    def edit(self, line, group):
+    def edit(self, index, group):
         wd = self.app.wd
         self.open_groups_page()
         # select group
-        wd.find_element_by_xpath("//*[@id='content']/form/span[" + str(line) + "]/input").click()
+        self.select_group_by_index(index)
+        #wd.find_element_by_xpath("//*[@id='content']/form/span[" + str(line) + "]/input").click()
         # submit edit
         wd.find_element_by_name("edit").click()
         self.fill_group_form(group)
@@ -53,15 +54,21 @@ class GroupHelper:
         self.open_groups_page()
         self.group_cache = None
 
-    def delete(self, line):
+    def select_group_by_index(self, index):
+        wd = self.app.wd
+        wd.find_elements_by_name("selected[]")[index].click()
+
+        # if we have only one group, xpath locator must be without []
+        #if self.count() == 1:
+        #    xpath = "//*[@id='content']/form/span/input"
+        #else:
+        #    xpath = "//*[@id='content']/form/span[" + str(line) + "]/input"
+        #wd.find_element_by_xpath(xpath).click()
+
+    def delete(self, index):
         wd = self.app.wd
         self.open_groups_page()
-        #if we have only one group, xpath locator must be without []
-        if self.count() == 1:
-            xpath = "//*[@id='content']/form/span/input"
-        else:
-            xpath = "//*[@id='content']/form/span[" + str(line) + "]/input"
-        wd.find_element_by_xpath(xpath).click()
+        self.select_group_by_index(index)
         #submit deletion
         wd.find_element_by_name("delete").click()
         self.open_groups_page()

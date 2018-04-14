@@ -32,19 +32,20 @@ class PersonHelper:
         wd.find_element_by_link_text("home").click()
         self.person_cache = None
 
-    def edit(self, line, person):
+    def edit(self, index, person):
         wd = self.app.wd
         # select item
-        wd.find_element_by_xpath("//table[@id='maintable']/tbody/tr[" + str(line+1) +"]/td[8]/a/img").click()
+        wd.find_element_by_xpath("//*[@id='maintable']/tbody/tr[" + str(index + 2) +"]/td[8]/a/img").click()
         self.fill_person_form(wd, person)
         # submit person update
         wd.find_element_by_xpath("//div[@id='content']/form/input[22]").click()
         self.person_cache = None
+        time.sleep(1)
 
-    def delete(self, line):
+    def delete(self, index):
         wd = self.app.wd
         #select 1st item
-        wd.find_element_by_xpath("//table[@id='maintable']/tbody/tr[" + str(line + 1) + "]/td[1]").click()
+        wd.find_element_by_xpath("//*[@id='maintable']/tbody/tr[" + str(index + 2) + "]/td[1]").click()
         #submit deletion
         wd.find_element_by_xpath("//div[@id='content']/form[2]/div[2]/input").click()
         wd.switch_to_alert().accept()

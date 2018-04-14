@@ -1,5 +1,4 @@
 {
   "test_add_person.py::test_add_empty_person": true,
-  "test_add_person.py::test_add_person": true,
-  "test_del_person.py::test_delete_person": true
+  "test_add_person.py::test_add_person": true
 }
