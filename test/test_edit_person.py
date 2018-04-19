@@ -6,7 +6,7 @@ def test_edit_person(app):
         app.person.create(Person(lname="Zadornov"))
     old_persons = app.person.get_person_list()
     person_param = randrange(len(old_persons))
-    person = Person(lname="New person")
+    person = Person(lname="Ivanov", fname="Ivan")
     person.id = old_persons[person_param].id
     app.person.edit(person_param, person)
     new_persons = app.person.get_person_list()

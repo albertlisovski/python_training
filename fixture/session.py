@@ -10,7 +10,6 @@ class SessionHelper:
         wd.find_element_by_link_text("Logout").click()
 
     def ensure_logout(self):
-        wd = self.app.wd
         if self.is_logged_in():
             self.logout()
 
@@ -21,11 +20,10 @@ class SessionHelper:
         except NoSuchElementException:
             return False
         return True
-        #return len(wd.find_element_by_xpath("//*[@id='top']/form/a")) > 0
 
-    def is_logged_in_as(self, username):
+    def get_logged_user(self):
         wd = self.app.wd
-        return wd.find_element_by_xpath("//*[@id='top']/form/b").text == "("+username+")"
+        return wd.find_element_by_xpath("//*[@id='top']/form/b").text[1:-1]
 
     def login(self, username, password):
         wd = self.app.wd
@@ -36,12 +34,11 @@ class SessionHelper:
         wd.find_element_by_name("pass").click()
         wd.find_element_by_name("pass").clear()
         wd.find_element_by_name("pass").send_keys(password)
-        wd.find_element_by_xpath("//form[@id='LoginForm']/input[3]").click()
+        wd.find_element_by_css_selector('input[type="submit"]').click()
 
     def ensure_login(self, username, password):
-        wd = self.app.wd
         if self.is_logged_in():
-            if self.is_logged_in_as(username):
+            if self.get_logged_user() == username:
                 return
             else:
                 self.logout()

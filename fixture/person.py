@@ -1,4 +1,4 @@
-import time
+import time, re
 from model.person import Person
 
 class PersonHelper:
@@ -11,7 +11,10 @@ class PersonHelper:
         self.change_field_value("middlename", person.mname)
         self.change_field_value("lastname", person.lname)
         self.change_field_value("nickname", person.nname)
-        self.change_field_value("home", person.phone)
+        self.change_field_value("home", person.homephone)
+        self.change_field_value("mobile", person.mobilephone)
+        self.change_field_value("work", person.workphone)
+        self.change_field_value("secondary", person.secondaryphone)
         self.change_field_value("email", person.email)
         self.change_field_value("address", person.address)
 
@@ -66,9 +69,56 @@ class PersonHelper:
             time.sleep(1)
             #self.open_groups_page()
             self.person_cache = []
-            for element in wd.find_elements_by_name("entry"):
-                text = element.find_element_by_css_selector("td:nth-child(2)").text
-                id = element.find_element_by_name("selected[]").get_attribute("value")
-                self.person_cache.append(Person(lname=text, id=id))
+            for row in wd.find_elements_by_name("entry"):
+                cells = row.find_elements_by_tag_name("td")
+                lastname = cells[1].text
+                firstname = cells[2].text
+                id = cells[0].find_element_by_name("selected[]").get_attribute("value")
+                all_phones = cells[5].text.splitlines()
+                for i in range(4):
+                    if i >= len(all_phones):
+                        all_phones.append("")
+                self.person_cache.append(
+                    Person(fname=firstname, lname=lastname, id=id, homephone=all_phones[0], mobilephone=all_phones[1],
+                           workphone=all_phones[2], secondaryphone=all_phones[3]))
         return list(self.person_cache)
 
+    def open_person_to_edit_by_index(self, index):
+        wd = self.app.wd
+        self.app.open_home_page()
+        row = wd.find_elements_by_name("entry")[index]
+        cell = row.find_elements_by_tag_name("td")[7]
+        cell.find_element_by_tag_name("a").click()
+        time.sleep(1)
+
+    def open_person_to_view_by_index(self, index):
+        wd = self.app.wd
+        self.app.open_home_page()
+        row = wd.find_elements_by_name("entry")[index]
+        cell = row.find_elements_by_tag_name("td")[6]
+        cell.find_element_by_tag_name("a").click()
+        time.sleep(1)
+
+    def get_person_info_from_edit_page(self, index):
+        wd = self.app.wd
+        self.open_person_to_edit_by_index(index)
+        homephone = wd.find_element_by_name("home").get_attribute("value")
+        mobilephone = wd.find_element_by_name("mobile").get_attribute("value")
+        workphone = wd.find_element_by_name("work").get_attribute("value")
+        secondaryphone = wd.find_element_by_name("phone2").get_attribute("value")
+        firstname = wd.find_element_by_name("firstname").get_attribute("value")
+        lastname = wd.find_element_by_name("lastname").get_attribute("value")
+        id = wd.find_element_by_name("id").get_attribute("value")
+        return Person(fname=firstname, lname=lastname, id=id, homephone=homephone, workphone=workphone,
+                      mobilephone=mobilephone, secondaryphone=secondaryphone)
+
+    def get_person_info_from_view_page(self, index):
+        wd = self.app.wd
+        self.open_person_to_view_by_index(index)
+        text = wd.find_element_by_id("content").text
+        homephone = re.search("H: (.*)", text).group(1)
+        workphone = re.search("W: (.*)", text).group(1)
+        mobilephone = re.search("M: (.*)", text).group(1)
+        secondaryphone = re.search("P: (.*)", text).group(1)
+        return Person(homephone=homephone, workphone=workphone,
+                      mobilephone=mobilephone, secondaryphone=secondaryphone)
