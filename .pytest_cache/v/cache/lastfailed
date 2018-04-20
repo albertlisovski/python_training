@@ -1,3 +1,5 @@
 {
+  "test/test_add_person.py::test_add_person": true,
+  "test/test_add_person.py::test_add_person[None:fname(v ~ lnameU 49p`  \\\\p(M]": true,
   "test_add_contact2.py": true
 }
