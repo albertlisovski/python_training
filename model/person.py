@@ -1,7 +1,9 @@
 from sys import maxsize
 
 class Person:
-    def __init__(self, fname=None, mname=None, lname=None, nname=None, homephone=None, mobilephone=None, workphone=None, secondaryphone=None, email=None, address=None, id=None):
+    def __init__(self, fname=None, mname=None, lname=None, nname=None, homephone=None, mobilephone=None, workphone=None,
+                 secondaryphone=None, allphones_from_home_page=None, email=None, email2=None, email3=None,
+                 allemails_from_home_page=None, address=None, id=None):
         self.fname = fname
         self.mname = mname
         self.lname = lname
@@ -10,7 +12,11 @@ class Person:
         self.mobilephone = mobilephone
         self.workphone = workphone
         self.secondaryphone = secondaryphone
+        self.allphones_from_home_page = allphones_from_home_page
         self.email = email
+        self.email2 = email2
+        self.email3 = email3
+        self.allemails_from_home_page = allemails_from_home_page
         self.address = address
         self.id = id
 

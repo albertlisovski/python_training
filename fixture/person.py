@@ -16,6 +16,8 @@ class PersonHelper:
         self.change_field_value("work", person.workphone)
         self.change_field_value("secondary", person.secondaryphone)
         self.change_field_value("email", person.email)
+        self.change_field_value("email2", person.email2)
+        self.change_field_value("email3", person.email3)
         self.change_field_value("address", person.address)
 
     def change_field_value(self, fieldname, text):
@@ -74,13 +76,9 @@ class PersonHelper:
                 lastname = cells[1].text
                 firstname = cells[2].text
                 id = cells[0].find_element_by_name("selected[]").get_attribute("value")
-                all_phones = cells[5].text.splitlines()
-                for i in range(4):
-                    if i >= len(all_phones):
-                        all_phones.append("")
-                self.person_cache.append(
-                    Person(fname=firstname, lname=lastname, id=id, homephone=all_phones[0], mobilephone=all_phones[1],
-                           workphone=all_phones[2], secondaryphone=all_phones[3]))
+                all_emails = cells[4].text
+                all_phones = cells[5].text
+                self.person_cache.append(Person(fname=firstname, lname=lastname, id=id, allphones_from_home_page=all_phones, allemails_from_home_page=all_emails))
         return list(self.person_cache)
 
     def open_person_to_edit_by_index(self, index):
@@ -106,11 +104,14 @@ class PersonHelper:
         mobilephone = wd.find_element_by_name("mobile").get_attribute("value")
         workphone = wd.find_element_by_name("work").get_attribute("value")
         secondaryphone = wd.find_element_by_name("phone2").get_attribute("value")
+        email = wd.find_element_by_name("email").get_attribute("value")
+        email2 = wd.find_element_by_name("email2").get_attribute("value")
+        email3 = wd.find_element_by_name("email3").get_attribute("value")
         firstname = wd.find_element_by_name("firstname").get_attribute("value")
         lastname = wd.find_element_by_name("lastname").get_attribute("value")
         id = wd.find_element_by_name("id").get_attribute("value")
         return Person(fname=firstname, lname=lastname, id=id, homephone=homephone, workphone=workphone,
-                      mobilephone=mobilephone, secondaryphone=secondaryphone)
+                      mobilephone=mobilephone, secondaryphone=secondaryphone, email=email, email2=email2, email3=email3)
 
     def get_person_info_from_view_page(self, index):
         wd = self.app.wd
