@@ -1,7 +1,27 @@
 {
+  "test_add_group.py::test_add_group[None:name ME9# \\\\SM;header/\\\\dy#@[;footer|V#^@wYx'@]": true,
+  "test_add_group.py::test_add_group[None:name${I;header,V<dRta\\\\Qj-H;footery+0-w]": true,
   "test_add_group.py::test_add_group[None:name,Zto6s ;header;footerLgKAl5O;$5]": true,
+  "test_add_group.py::test_add_group[None:name-,Y<VB9(;header5KBiYSb Cy;_ mF[QU;footer&K]": true,
+  "test_add_group.py::test_add_group[None:name3333333333;header/\\\\dy#@[;footer|V#^@wYx'@]": true,
   "test_add_group.py::test_add_group[None:name5 LJiqew ;headerFCZb RhRuxtP;footer cSWPrbfooter cSWPrbfooter cSWPrbfooter cSWPrbfooter cSWPrbfooter cSWPrbfooter cSWPrbfooter cSWPrbfooter cSWPrbfooter cSWPrb]": true,
+  "test_add_group.py::test_add_group[None:name8?pzP ;headerbtZ8 !;footerH=w -[K{qi]": true,
+  "test_add_group.py::test_add_group[None:name;9;header 4c#/G{9Iz V7;footer)u%d2`uPgJ#Ee\"N ]": true,
+  "test_add_group.py::test_add_group[None:name;header,{5A;footerCeQ8270I!V[]": true,
+  "test_add_group.py::test_add_group[None:nameNl  ?;header0;footerh1,-?4yP%g]": true,
+  "test_add_group.py::test_add_group[None:nameR,_6- 5;headerrvWo=a?HFiT;footer,;E: oS\"l-&C\"$u]": true,
   "test_add_group.py::test_add_group[None:nameY5D ;headerCo;footer xMcmdrMNpmo wfooter xMcmdrMNpmo wfooter xMcmdrMNpmo wfooter xMcmdrMNpmo wfooter xMcmdrMNpmo wfooter xMcmdrMNpmo wfooter xMcmdrMNpmo wfooter xMcmdrMNpmo wfooter xMcmdrMNpmo wfooter xMcmdrMNpmo w]": true,
+  "test_add_group.py::test_add_group[None:name}62q\"lzJ;header;footer$*J@E,C#I@rvl +zLeM]": true,
   "test_add_person.py::test_add_empty_person": true,
-  "test_add_person.py::test_add_person": true
+  "test_add_person.py::test_add_person": true,
+  "test_add_person.py::test_add_person[None:fname 9~'>}!:' lnamehg-Y.6Gd~]": true,
+  "test_add_person.py::test_add_person[None:fname lname*uS=Z( q;M7ws_QTV ]": true,
+  "test_add_person.py::test_add_person[None:fname01_ lnameL  Zb XFDGzS(]": true,
+  "test_add_person.py::test_add_person[None:fnameNwB]uK` lname`Gv*T\\\\y]": true,
+  "test_add_person.py::test_add_person[None:fname\\\\ lname]": true,
+  "test_add_person.py::test_add_person[None:fnameh8lHK^p lnamee\"' hSIC17^F]": true,
+  "test_add_person.py::test_add_person[None:fnamenoq. lname4u <fV0QU]": true,
+  "test_add_person.py::test_add_person[None:fnamez lname^`<DkEb}(Cw5r,e'92]": true,
+  "test_add_person.py::test_add_person[None:fname|-b-< 5o lname-PCev]": true,
+  "test_person_info.py::test_phones_on_person_view_page": true
 }

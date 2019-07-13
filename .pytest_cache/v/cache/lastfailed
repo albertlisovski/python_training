@@ -1,4 +1,10 @@
 {
+  "test/test_add_group.py::test_add_group[None:name ~/HS *;header0'#;footer l~MoE`MPSCB5,0Fq ]": true,
+  "test/test_add_group.py::test_add_group[None:name%Sa+82;headerXK7$;footerUXhg'<gwj$ (v]": true,
+  "test/test_add_group.py::test_add_group[None:name.Dl44 ;header;footer ~%\"5t7TjWo ]": true,
+  "test/test_add_group.py::test_add_group[None:name0 Ng;headery, v .VIWKH#W\\\\;footer]": true,
+  "test/test_add_group.py::test_add_group[None:name\\\\;headerLJ]_qU|X;footer{s+M[KH]`EvEFhve JR]": true,
+  "test/test_add_group.py::test_add_group[None:name{  ?w22};header!o7o{ (  %6AFu?;footer944]]": true,
   "test/test_add_person.py::test_add_person": true,
   "test/test_add_person.py::test_add_person[None:fname(v ~ lnameU 49p`  \\\\p(M]": true,
   "test_add_contact2.py": true
