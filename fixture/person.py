@@ -45,6 +45,35 @@ class PersonHelper:
         # submit person update
         wd.find_element_by_xpath("//div[@id='content']/form/input[22]").click()
         self.person_cache = None
+        time.sleep(3)
+
+    def edit_person_by_id(self, person):
+        wd = self.app.wd
+        # select item
+        #tr = wd.find_element_by_css_selector("input[id='%s']" % person.id)
+        #row = tr.text
+        #wd.find_element_by_xpath("//*[@id='maintable']/tbody/tr[" + person.id +"]/td[8]/a/img").click()
+        #table = wd.find_element_by_xpath("//*[@id='maintable']/tbody")
+        #for row in wd.find_elements_by_css_selector("#maintable"):
+        #i = 0
+        rows = wd.find_elements_by_css_selector("#maintable > tbody > tr")
+        for i in range(len(rows)):
+            t = wd.find_element_by_css_selector("#maintable > tbody > tr:nth-child(" + str(i+2) + ") > td:nth-child(1)")
+            try:
+                cb = t.find_element_by_id(person.id)
+            except Exception:
+                pass
+
+        #row = wd.find_element_by_css_selector("input[id='%s']" % person.id)
+
+        #while rows[i].find_element_by_css_selector("input[id='%s']" % person.id) == None:
+        #    i += 1
+
+
+        self.fill_person_form(wd, person)
+        # submit person update
+        wd.find_element_by_xpath("//div[@id='content']/form/input[22]").click()
+        self.person_cache = None
         time.sleep(1)
 
     def delete(self, index):
@@ -56,6 +85,17 @@ class PersonHelper:
         wd.switch_to_alert().accept()
         self.person_cache = None
         time.sleep(1)
+
+    def delete_person_by_id(self, id):
+        #time.sleep(1)
+        wd = self.app.wd
+        #select 1st item
+        wd.find_element_by_css_selector("input[id='%s']" % id).click()
+        #submit deletion
+        wd.find_element_by_xpath("//div[@id='content']/form[2]/div[2]/input").click()
+        wd.switch_to_alert().accept()
+        self.person_cache = None
+        time.sleep(2)
 
     def count(self):
         wd = self.app.wd
